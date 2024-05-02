@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/features/home/ui/widgets/home_screen.dart';
 
 class NoteApp extends StatelessWidget {
   const NoteApp({super.key});
@@ -7,9 +8,8 @@ class NoteApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp( 
       title: "Note App",
-       theme: ThemeData(primaryColor: Colors.amber,
-        scaffoldBackgroundColor: Colors.white),
-
+       theme: ThemeData.light(),
+       home:const HomeScreen(),
     );
   }
 }
