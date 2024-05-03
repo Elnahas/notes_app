@@ -50,6 +50,11 @@ class TextStyles{
       fontWeight: FontWeightHelper.regular,
       color: ColorsManager.lightGray);
 
+        static TextStyle font20GrayRegular = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.regular,
+      color: ColorsManager.gray);
+
   static TextStyle font13BlueRegular = TextStyle(
       fontSize: 13.sp,
       fontWeight: FontWeightHelper.regular,
