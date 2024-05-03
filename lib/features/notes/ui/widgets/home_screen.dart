@@ -4,6 +4,7 @@ import 'package:notes_app/core/helpers/spacing.dart';
 import 'package:notes_app/core/theming/styles.dart';
 import 'package:notes_app/features/notes/ui/widgets/custom_app_bar.dart';
 import 'package:notes_app/features/notes/ui/widgets/note_item.dart';
+import 'package:notes_app/features/notes/ui/widgets/notes_list_view.dart';
 
 class NotesScreen extends StatelessWidget {
   const NotesScreen({super.key});
@@ -20,7 +21,9 @@ class NotesScreen extends StatelessWidget {
             children: [
               const CustomAppBar(),
               verticalSpace(15),
-              NoteItems()
+              Expanded(
+                child: NotesListView(),
+              )
             ],
           ),
         ),
@@ -28,4 +31,3 @@ class NotesScreen extends StatelessWidget {
     );
   }
 }
-
