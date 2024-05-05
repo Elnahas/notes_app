@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/core/theming/color.dart';
 
 class AppTextField extends StatelessWidget {
-  const AppTextField({super.key});
+
+  final String hint ;
+  final int maxLines ;
+
+  const AppTextField({super.key, required this.hint, this.maxLines = 1});
 
   @override
   Widget build(BuildContext context) {
     return  TextField(
       cursorColor: ColorsManager.mainBlue,
+      maxLines: maxLines,
       decoration: InputDecoration(
-        hintText: "Title",
+        hintText: hint,
         hintStyle: TextStyle(color: ColorsManager.gray),
         
         border: buildBorder(),
