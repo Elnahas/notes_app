@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notes_app/core/theming/color.dart';
 
 class AppButtonText extends StatelessWidget {
   const AppButtonText({super.key});
