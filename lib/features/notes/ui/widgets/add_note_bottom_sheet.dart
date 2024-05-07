@@ -9,20 +9,67 @@ class AddNoteButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            verticalSpace(16),
-            const AppTextField(hint: "Title",),
-            verticalSpace(16),
-            const AppTextField(hint: "Content", maxLines: 5,),
-            verticalSpace(100),
-            const AppButtonText(),
-            verticalSpace(16),
-            ],
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
+    super.key,
+  });
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKye = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKye,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          verticalSpace(16),
+          AppTextField(
+            hint: "Title",
+            onSaved: (value) {
+              title = value;
+            },
+          ),
+          verticalSpace(16),
+          AppTextField(
+            hint: "Content",
+            maxLines: 5,
+            onSaved: (value) {
+              subTitle = value;
+            },
+          ),
+          verticalSpace(100),
+          AppButtonText(
+            onPressed: () {
+              if (formKye.currentState!.validate()) {
+                formKye.currentState!.save();
+              }
+              else{
+                autovalidateMode = AutovalidateMode.always;
+              }
+              setState(() {
+                
+              });
+            },
+          ),
+          verticalSpace(16),
+        ],
       ),
     );
   }

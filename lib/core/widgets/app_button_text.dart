@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppButtonText extends StatelessWidget {
-  const AppButtonText({super.key});
+  final Function()? onPressed;
+  const AppButtonText({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class AppButtonText extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
           fixedSize: MaterialStateProperty.all(Size(double.maxFinite, 50.h)),
           backgroundColor: MaterialStatePropertyAll(Colors.cyan)),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         "Add",
         style: TextStyle(color: Colors.black, fontSize: 20.sp ),
