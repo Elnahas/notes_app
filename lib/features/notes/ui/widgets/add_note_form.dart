@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/features/notes/data/model/note_model.dart';
+import 'package:notes_app/features/notes/logic/cubit/add_note_cubit.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/app_button_text.dart';
@@ -45,13 +48,18 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onPressed: () {
               if (formKye.currentState!.validate()) {
                 formKye.currentState!.save();
-              }
-              else{
+
+                var noteModel = NoteModel(
+                    title: title!,
+                    subTitle: subTitle!,
+                    date: DateTime.now().toString(),
+                    color: Colors.blueGrey.value);
+
+                BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+              } else {
                 autovalidateMode = AutovalidateMode.always;
               }
-              setState(() {
-                
-              });
+              setState(() {});
             },
           ),
           verticalSpace(16),
