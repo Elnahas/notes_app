@@ -27,6 +27,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       key: formKye,
       autovalidateMode: autovalidateMode,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           verticalSpace(16),
           AppTextField(
