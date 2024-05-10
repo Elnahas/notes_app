@@ -9,18 +9,14 @@ class NoteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ScreenUtilInit(
+    return ScreenUtilInit(
       designSize: Size(375, 812),
       minTextAdapt: true,
-      
-      child: MultiBlocProvider(
-        providers: [BlocProvider(create: (context) => AddNoteCubit(),)],
-        child: MaterialApp( 
-          debugShowCheckedModeBanner: false,
-          title: "Note App",
-           theme: ThemeData.dark(),
-           home:const NotesScreen(),
-        ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Note App",
+        theme: ThemeData.dark(),
+        home: const NotesScreen(),
       ),
     );
   }
