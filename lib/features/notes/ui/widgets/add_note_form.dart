@@ -6,6 +6,8 @@ import 'package:notes_app/features/notes/logic/cubit/add_note/add_note_cubit.dar
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/widgets/app_button_text.dart';
 import '../../../../core/widgets/app_text_field.dart';
+import 'package:intl/intl.dart';
+
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -45,7 +47,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
           ),
           verticalSpace(100),
-          BlocBuilder<AddNoteCubit,AddNoteState>(
+          BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return AppButtonText(
                 isLoading: state is AddNoteLoading ? true : false,
@@ -53,10 +55,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   if (formKye.currentState!.validate()) {
                     formKye.currentState!.save();
 
+                    var now = DateTime.now();
+                    var formatter = DateFormat('yyyy-MM-dd');
+                    String formattedDate = formatter.format(now);
+
                     var noteModel = NoteModel(
                         title: title!,
                         subTitle: subTitle!,
-                        date: DateTime.now().toString(),
+                        date: formattedDate,
                         color: Colors.blueGrey.value);
 
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
