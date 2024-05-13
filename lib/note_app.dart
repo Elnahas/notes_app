@@ -12,13 +12,16 @@ class NoteApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Note App",
-        theme: ThemeData.dark(),
-        home: BlocProvider(
-          create: (context) => NotesCubit(),
-          child: const NotesScreen(),
+      child: BlocProvider(
+        create: (context) => NotesCubit(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: "Note App",
+          theme: ThemeData.dark(),
+          home: BlocProvider(
+            create: (context) => NotesCubit(),
+            child: const NotesScreen(),
+          ),
         ),
       ),
     );
